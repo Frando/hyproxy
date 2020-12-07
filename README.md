@@ -31,8 +31,8 @@ access via f1dd4fa6801a659168c48eab3018f168a621f58677f5cfa6e495da16a7dd5218
 ```
 and then send the printed long key to others. they can then do:
 ```
-$ hyproxy connect -k 1d73a82039cd90efb78331778048be85cce1a1c0147085b110579be4ceee62f5
-outbound proxy to 1d73a82039cd90efb78331778048be85cce1a1c0147085b110579be4ceee62f5 opened.
+$ hyproxy connect -k f1dd4fa6801a659168c48eab3018f168a621f58677f5cfa6e495da16a7dd5218
+outbound proxy to f1dd4fa6801a659168c48eab3018f168a621f58677f5cfa6e495da16a7dd5218 opened.
 access via localhost:9999
 ```
 and then your friends can open [`http://localhost:9999`](http://localhost:9999) to access the HTTP server you just opened.

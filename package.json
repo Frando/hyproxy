@@ -1,0 +1,31 @@
+{
+  "name": "hyproxy",
+  "version": "0.0.1",
+  "description": "Proxy TCP connections over hypercore-protocol",
+  "bin": {
+    "hyproxy": "bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frando/hyproxy"
+  },
+  "keywords": [
+    "hypercore-protocol",
+    "proxy"
+  ],
+  "author": "Franz Heinzmann <frando@unbiskant.org>",
+  "bugs": {
+    "url": "https://github.com/Frando/hyproxy/issues"
+  },
+  "homepage": "https://github.com/Frando/hyproxy#readme",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@corestore/networker": "^1.0.4",
+    "corestore": "^5.8.1",
+    "debug": "^4.3.1",
+    "minimist": "^1.2.5",
+    "pretty-hash": "^1.0.1",
+    "random-access-memory": "^3.1.1"
+  }
+}

@@ -7,9 +7,9 @@ This provides an easy way to e.g. share an HTTP server running on your computer 
 *This is an experiment and not yet tested for anything serious.*
 
 - When opening an inbound proxy server, a random `key` will be created and printed
-- There can be more than one inbound proxy per key. Currently, the first connection is used, and others are fallbacks if the first fails.
-- Anyone who knows this `key` can connect to an inbound proxy and expose it as a local server, or create a new inbound proxy.
-- *TODO:* Add optional capability creation/verification when connecting to inbound proxies
+- Anyone who knows this `key` can connect to the proxy and expose it as if it were a local server
+- There can be more than one inbound proxy per key. When connecting, currently whatever peer answers first is used, and others are fallbacks if the first fails.
+- *TODO:* Add optional capability creation when opening inbound proxies and verification when connecting to them
 
 ## Installation
 
@@ -73,7 +73,7 @@ Create a new proxy manager.
 Options include:
 - `storage`: Storage to persist keys (optional, default to in-memory)
 - `corestore`: Pass your [corestore](https://github.com/andrewosh/corestore) instance (optional)
-- `corestore`: Pass your [@corestore/networker](https://github.com/andrewosh/corestore-networker) instance (optional)
+- `networker`: Pass your [@corestore/networker](https://github.com/andrewosh/corestore-networker) instance (optional)
 
 #### `await proxy.outbound(key, port, host)`
 

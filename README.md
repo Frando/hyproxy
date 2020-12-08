@@ -4,7 +4,12 @@ A peer-to-peer proxy server and client that uses [Hypercore Protocol](https://hy
 
 This provides an easy way to e.g. share an HTTP server running on your computer with friends, without having to deal with port forwardings etc, because Hypercore Protocol handles this for you.
 
-*Note: This is an experiment and not (yet) intended for anything serious.*
+*This is an experiment and not yet tested for anything serious.*
+
+- When opening an inbound proxy server, a random `key` will be created and printed
+- There can be more than one inbound proxy per key. Currently, the first connection is used, and others are fallbacks if the first fails.
+- Anyone who knows this `key` can connect to an inbound proxy and expose it as a local server, or create a new inbound proxy.
+- *TODO:* Add optional capability creation/verification when connecting to inbound proxies
 
 ## Installation
 
@@ -55,13 +60,13 @@ Options in connect mode:
 
 ## API usage
 
-```
+```javascript
 const HyperProxy = require('hyproxy')
 const hyproxy = new HyperProxy({ storage: '/tmp/hyproxy' })
 await hyproxy.outbound(key, port, host)
 ```
 
-#### proxy = new HyperProxy(opts)
+#### `proxy = new HyperProxy(opts)`
 
 Create a new proxy manager.
 
@@ -70,7 +75,7 @@ Options include:
 - `corestore`: Pass your [corestore](https://github.com/andrewosh/corestore) instance (optional)
 - `corestore`: Pass your [@corestore/networker](https://github.com/andrewosh/corestore-networker) instance (optional)
 
-#### await proxies.outbound(key, port, host)
+#### `await proxy.outbound(key, port, host)`
 
 Create a new outbound proxy that connects to a peer on `key` and exposes a local proxy server on `host:port`.
 
@@ -80,7 +85,7 @@ Create a new outbound proxy that connects to a peer on `key` and exposes a local
 
 Returns an object with `{ key, port, host }`.
 
-#### await proxies.inbound(key, port, host)
+#### `await proxy.inbound(key, port, host)`
 
 Create a new inbound proxy that listens for peers on `key` and forwards connections to `host:port`.
 

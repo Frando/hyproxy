@@ -16,13 +16,15 @@ const mode = argv._[0]
 main(mode, argv).catch(onerror)
 
 async function main (mode, opts) {
-  const proxy = new HyperProxy({ storage: opts.storage })
+  const proxies = new HyperProxy({ storage: opts.storage })
   if (mode === 'connect') {
-    const { key, port, host } = await proxy.outbound(opts.key, opts.port, opts.host)
-    console.log(`outbound proxy to ${key} connected.\naccess via ${host}:${port}`)
+    const proxy = await proxies.outbound(opts.key, opts.port, opts.host)
+    console.log(`outbound proxy to ${proxy.key.toString('hex')} connected.`)
+    console.log(`naccess via ${proxy.host}:${proxy.port}`)
   } else if (mode === 'listen') {
-    const { key, port, host } = await proxy.inbound(opts.key, opts.port, opts.host)
-    console.log(`inbound proxy to ${host}:${port} listening.\naccess via ${key}`)
+    const proxy = await proxies.inbound(opts.key, opts.port, opts.host)
+    console.log(`inbound proxy to ${proxy.host}:${proxy.port} listening.`)
+    console.log(`access via ${proxy.key.toString('hex')}`)
   } else {
     onerror()
   }

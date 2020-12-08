@@ -1,6 +1,6 @@
 {
   "name": "hyproxy",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Proxy TCP connections over hypercore-protocol",
   "bin": {
     "hyproxy": "bin.js"
@@ -24,6 +24,7 @@
     "@corestore/networker": "^1.0.4",
     "corestore": "^5.8.1",
     "debug": "^4.3.1",
+    "get-port": "^5.1.1",
     "minimist": "^1.2.5",
     "pretty-hash": "^1.0.1",
     "random-access-memory": "^3.1.1"
